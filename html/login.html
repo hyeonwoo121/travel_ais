@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 - 호이짱 트래블</title>
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .login-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+            min-height: 70vh;
+        }
+
+        .login-box {
+            background: var(--white);
+            border: 2px solid var(--border-color);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .login-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .login-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .tab-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 1rem;
+            background: var(--bg-light);
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            border-color: var(--primary-color);
+        }
+
+        .tab-btn:hover:not(.active) {
+            border-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(30, 64, 175, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .message {
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            display: none;
+            font-weight: 600;
+        }
+
+        .message.success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 2px solid #10b981;
+        }
+
+        .message.error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 2px solid #ef4444;
+        }
+
+        .message.show {
+            display: block;
+        }
+
+        .form-content {
+            display: none;
+        }
+
+        .form-content.active {
+            display: block;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .back-link a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-link a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="travel-agency-website.html" class="logo">✈️ 호이짱 트래블</a>
+            <ul class="nav-links">
+                <li><a href="travel-agency-website.html#home">홈</a></li>
+                <li><a href="travel-agency-website.html#about">회사소개</a></li>
+                <li><a href="travel-agency-website.html#services">서비스</a></li>
+                <li><a href="travel-agency-website.html#contact">문의하기</a></li>
+                <li><a href="qa.html">Q&A</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Login Container -->
+    <div class="login-container">
+        <div class="login-box">
+            <div class="login-header">
+                <h1>🔐 로그인</h1>
+                <p>여행의 시작, 호이짱 트래블과 함께</p>
+            </div>
+
+            <!-- Tab Buttons -->
+            <div class="tab-buttons">
+                <button class="tab-btn active" onclick="switchTab('login')">로그인</button>
+                <button class="tab-btn" onclick="switchTab('signup')">회원가입</button>
+            </div>
+
+            <!-- Message -->
+            <div id="message" class="message"></div>
+
+            <!-- Login Form -->
+            <div id="login-form" class="form-content active">
+                <form onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label for="login-email">이메일</label>
+                        <input type="email" id="login-email" placeholder="example@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">비밀번호</label>
+                        <input type="password" id="login-password" placeholder="비밀번호를 입력하세요" required>
+                    </div>
+                    <button type="submit" class="submit-btn">로그인</button>
+                </form>
+            </div>
+
+            <!-- Signup Form -->
+            <div id="signup-form" class="form-content">
+                <form onsubmit="handleSignup(event)">
+                    <div class="form-group">
+                        <label for="signup-name">이름</label>
+                        <input type="text" id="signup-name" placeholder="홍길동" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-email">이메일</label>
+                        <input type="email" id="signup-email" placeholder="example@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">비밀번호</label>
+                        <input type="password" id="signup-password" placeholder="비밀번호 (8자 이상)" required minlength="8">
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password-confirm">비밀번호 확인</label>
+                        <input type="password" id="signup-password-confirm" placeholder="비밀번호를 다시 입력하세요" required>
+                    </div>
+                    <button type="submit" class="submit-btn">회원가입</button>
+                </form>
+            </div>
+
+            <div class="back-link">
+                <a href="travel-agency-website.html">← 메인으로 돌아가기</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p style="font-size: 1.1rem; font-weight: 600;">&copy; 2024 호이짱 트래블. All rights reserved.</p>
+        <p style="margin-top: 0.8rem;">당신의 여행 파트너, 호이짱 트래블</p>
+    </footer>
+
+    <script>
+        // 탭 전환
+        function switchTab(tab) {
+            const loginForm = document.getElementById('login-form');
+            const signupForm = document.getElementById('signup-form');
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const message = document.getElementById('message');
+
+            // 메시지 숨기기
+            message.classList.remove('show');
+
+            if (tab === 'login') {
+                loginForm.classList.add('active');
+                signupForm.classList.remove('active');
+                tabBtns[0].classList.add('active');
+                tabBtns[1].classList.remove('active');
+            } else {
+                loginForm.classList.remove('active');
+                signupForm.classList.add('active');
+                tabBtns[0].classList.remove('active');
+                tabBtns[1].classList.add('active');
+            }
+        }
+
+        // 메시지 표시
+        function showMessage(text, type) {
+            const message = document.getElementById('message');
+            message.textContent = text;
+            message.className = `message ${type} show`;
+        }
+
+        // 회원가입 처리
+        function handleSignup(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('signup-name').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const passwordConfirm = document.getElementById('signup-password-confirm').value;
+
+            // 비밀번호 확인
+            if (password !== passwordConfirm) {
+                showMessage('비밀번호가 일치하지 않습니다.', 'error');
+                return;
+            }
+
+            // localStorage에서 사용자 목록 가져오기
+            let users = JSON.parse(localStorage.getItem('users') || '[]');
+
+            // 이메일 중복 확인
+            if (users.some(user => user.email === email)) {
+                showMessage('이미 등록된 이메일입니다.', 'error');
+                return;
+            }
+
+            // 새 사용자 추가
+            users.push({
+                name: name,
+                email: email,
+                password: password, // 실제로는 암호화 필요!
+                registeredAt: new Date().toISOString()
+            });
+
+            // localStorage에 저장
+            localStorage.setItem('users', JSON.stringify(users));
+
+            showMessage('회원가입이 완료되었습니다! 로그인해주세요.', 'success');
+
+            // 폼 초기화
+            e.target.reset();
+
+            // 2초 후 로그인 탭으로 전환
+            setTimeout(() => {
+                switchTab('login');
+            }, 2000);
+        }
+
+        // 로그인 처리
+        function handleLogin(e) {
+            e.preventDefault();
+
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            // localStorage에서 사용자 목록 가져오기
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+
+            // 사용자 찾기
+            const user = users.find(u => u.email === email && u.password === password);
+
+            if (user) {
+                // 로그인 성공
+                localStorage.setItem('currentUser', JSON.stringify({
+                    name: user.name,
+                    email: user.email,
+                    loginAt: new Date().toISOString()
+                }));
+
+                showMessage(`환영합니다, ${user.name}님!`, 'success');
+
+                // 1.5초 후 메인 페이지로 이동
+                setTimeout(() => {
+                    window.location.href = 'travel-agency-website.html';
+                }, 1500);
+            } else {
+                // 로그인 실패
+                showMessage('이메일 또는 비밀번호가 올바르지 않습니다.', 'error');
+            }
+        }
+
+
+    </script>
+</body>
+</html>
