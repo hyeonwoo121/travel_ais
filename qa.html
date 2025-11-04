@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q&A - 호이짱 트래블</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .qa-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .qa-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .qa-header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .qa-header p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+        }
+
+        .qa-item {
+            background: var(--white);
+            border: 2px solid var(--border-color);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .qa-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .qa-item:hover {
+            transform: translateX(10px);
+            border-color: var(--secondary-color);
+            box-shadow: 0 10px 30px rgba(30, 64, 175, 0.15);
+        }
+
+        .qa-item:hover::before {
+            transform: scaleY(1);
+        }
+
+        .qa-question {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .qa-icon {
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 900;
+        }
+
+        .qa-question h3 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .qa-answer {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1.05rem;
+            padding-left: 3rem;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 3rem;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(30, 64, 175, 0.3);
+        }
+
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(30, 64, 175, 0.4);
+        }
+
+        .category-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">✈️ 호이짱 트래블</div>
+            <ul class="nav-links">
+                <li><a href="travel-agency-website.html#home">홈</a></li>
+                <li><a href="travel-agency-website.html#about">회사소개</a></li>
+                <li><a href="travel-agency-website.html#services">서비스</a></li>
+                <li><a href="travel-agency-website.html#contact">문의하기</a></li>
+                <li><a href="qa.html">Q&A</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Q&A Content -->
+    <div class="qa-container">
+        <div class="qa-header">
+            <h1>자주 묻는 질문</h1>
+            <p>글로벌 트래블 이용에 대한 궁금증을 해결해드립니다</p>
+        </div>
+
+        <!-- 예약 관련 -->
+        <div class="qa-item">
+            <span class="category-badge">예약</span>
+            <div class="qa-question">
+                <span class="qa-icon">Q</span>
+                <h3>예약은 어떻게 진행하나요?</h3>
+            </div>
+            <div class="qa-answer">
+                전화(02-1234-5678) 또는 이메일(info@globaltravel.com)로 상담 신청을 해주시면, 전문 상담사가 고객님의 여행 계획에 맞춰 최적의 상품을 제안해드립니다. 상담 후 예약 확정 시 계약금을 입금하시면 예약이 완료됩니다.
+            </div>
+        </div>
+
+        <div class="qa-item">
+            <span class="category-badge">예약</span>
+            <div class="qa-question">
+                <span class="qa-icon">Q</span>
+                <h3>예약 취소 및 환불 규정은 어떻게 되나요?</h3>
+            </div>
+            <div class="qa-answer">
+                출발일 기준 30일 전 취소 시 10% 위약금, 20일 전 20%, 10일 전 30%, 7일 전 50%, 3일 전 70%, 당일 취소 시 100% 위약금이 발생합니다. 항공권의 경우 항공사 규정에 따라 별도의 취소 수수료가 적용될 수 있습니다.
+            </div>
+        </div>
+
+        <!-- 여행 상품 -->
+        <div class="qa-item">
+            <span class="category-badge">상품</span>
+            <div class="qa-question">
+                <span class="qa-icon">Q</span>
+                <h3>패키지 상품에는 무엇이 포함되어 있나요?</h3>
+            </div>
+            <div class="qa-answer">
+                일반적으로 왕복 항공권, 호텔 숙박, 공항 픽업 및 샌딩, 일정표상의 식사, 관광지 입장료, 한국어 가이드 서비스, 여행자 보험이 포함됩니다. 상품별로 포함 내역이 다를 수 있으니 상세 일정표를 꼭 확인해주세요.
+            </div>
+        </div>
+
+        <div class="qa-item">
+            <span class="category-badge">상품</span>
+            <div class="qa-question">
+                <span class="qa-icon">Q</span>
+                <h3>맞춤형 여행 설계는 어떻게 진행되나요?</h3>
+            </div>
+            <div class="qa-answer">
+                고객님의 여행 목적, 예산, 선호도, 동행자 정보 등을 상세히 상담한 후, 전문 플래너가 맞춤형 일정을 설계해드립니다. 초안 제시 후 2-3회 수정을 거쳐 최종 일정을 확정하며, 추가 비용 없이 일정 조정이 가능합니다.
+            </div>
+        </div>
+
+        <!-- 결제 관련 -->
+        <div class="qa-item">
+            <span class="category-badge">결제</span>
+            <div class="qa-question">
+                <span class="qa-icon">Q</span>
+                <h3>결제 방법은 어떤 것들이 있나요?</h3>
+            </div>
+            <div class="qa-answer">
+                계좌이체, 신용카드(무이자 할부 가능), 체크카드 결제가 가능합니다. 계약금은 전체 여행 비용의 30%, 잔금은 출발 7일 전까지 납부하시면 됩니다. 법인 고객의 경우 세금계산서 발행도 가능합니다.
+            </div>
+        </div>
+
+        <!-- 비자 관련 -->
+        <div class="qa-item">
+            <span class="category-badge">비자</span>
+            <div class="qa-question">
+                <span class="qa-icon">Q</span>
+                <h3>비자 대행 서비스는 어떻게 이용하나요?</h3>
+            </div>
+            <div class="qa-answer">
+                여행 예약 시 비자 대행 서비스를 신청하시면, 필요 서류 목록을 안내해드립니다. 고객님께서 서류를 준비하시면 저희가 대사관 접수 및 수령을 대행해드립니다. 국가별로 처리 기간이 다르므로 최소 출발 1개월 전에 신청하시길 권장합니다.
+            </div>
+        </div>
+
+        <!-- 현지 정보 -->
+        <div class="qa-item">
+            <span class="category-badge">현지정보</span>
+            <div class="qa-question">
+                <span class="qa-icon">Q</span>
+                <h3>여행 중 문제가 생기면 어떻게 연락하나요?</h3>
+            </div>
+            <div class="qa-answer">
+                24시간 긴급 연락망을 운영하고 있으며, 여행 출발 전 긴급 연락처를 안내해드립니다. 현지에서 문제 발생 시 한국 본사 및 현지 파트너사를 통해 즉시 지원이 가능합니다. 또한 여행자 보험으로 의료 사고나 물품 분실 등도 보상받으실 수 있습니다.
+            </div>
+        </div>
+
+        <div class="qa-item">
+            <span class="category-badge">기타</span>
+            <div class="qa-question">
+                <span class="qa-icon">Q</span>
+                <h3>단체 여행 할인이 있나요?</h3>
+            </div>
+            <div class="qa-answer">
+                10명 이상 단체 예약 시 인원에 따라 5~15%의 할인 혜택이 제공됩니다. 학교, 기업, 동호회 등 단체 여행 시 별도 문의 주시면 맞춤 견적을 제공해드리며, 전용 가이드 배정 등 추가 서비스도 가능합니다.
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="travel-agency-website.html" class="back-button">← 메인으로 돌아가기</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p style="font-size: 1.1rem; font-weight: 600;">&copy; 2024 글로벌 트래블. All rights reserved.</p>
+        <p style="margin-top: 0.8rem;">당신의 여행 파트너, 글로벌 트래블</p>
+    </footer>
+</body>
+</html>
