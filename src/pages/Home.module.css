@@ -1,0 +1,308 @@
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, var(--dark-bg) 0%, #1e3a8a 50%, var(--secondary-color) 100%);
+    color: var(--white);
+    padding: 10rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -5%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(147, 197, 253, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 8s ease-in-out infinite;
+}
+
+.heroContent {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    animation: slideInDown 1s ease;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.95;
+    animation: slideInUp 1s ease 0.2s both;
+    font-weight: 300;
+}
+
+.ctaButton {
+    display: inline-block;
+    background: var(--white);
+    color: var(--primary-color);
+    padding: 1.2rem 3rem;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    animation: slideInUp 1s ease 0.4s both;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.ctaButton:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+/* Section Styles */
+.section {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+}
+
+.sectionTitle {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+}
+
+.sectionSubtitle {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    margin-bottom: 4rem;
+    font-weight: 300;
+}
+
+/* About Section */
+.aboutContent {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.aboutCard {
+    background: linear-gradient(135deg, var(--bg-light) 0%, var(--white) 100%);
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: 2px solid var(--border-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.aboutCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    transition: width 0.3s ease;
+}
+
+.aboutCard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(30, 64, 175, 0.15);
+    border-color: var(--secondary-color);
+}
+
+.aboutCard:hover::before {
+    width: 100%;
+    opacity: 0.05;
+}
+
+.aboutCard h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.2rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.aboutCard p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+/* Services Section */
+.services {
+    background: linear-gradient(180deg, var(--bg-light) 0%, var(--white) 100%);
+    padding: 6rem 2rem;
+}
+
+.servicesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.serviceCard {
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.serviceCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.serviceCard:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 60px rgba(30, 64, 175, 0.2);
+    border-color: var(--secondary-color);
+}
+
+.serviceCard:hover::before {
+    transform: scaleX(1);
+}
+
+.serviceIcon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.serviceCard:hover .serviceIcon {
+    transform: scale(1.2) rotate(5deg);
+}
+
+.serviceCard h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.serviceCard p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+/* Contact Section */
+.contact {
+    background: linear-gradient(135deg, var(--dark-bg) 0%, #1e3a8a 50%, var(--secondary-color) 100%);
+    color: var(--white);
+    padding: 6rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.contact .sectionTitle {
+    color: var(--white);
+    -webkit-text-fill-color: var(--white);
+}
+
+.contactInfo {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+.contactItem {
+    background: rgba(255,255,255,0.1);
+    padding: 2.5rem;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.2);
+    transition: all 0.3s ease;
+    min-width: 250px;
+}
+
+.contactItem:hover {
+    background: rgba(255,255,255,0.15);
+    transform: translateY(-10px);
+    border-color: rgba(255,255,255,0.4);
+}
+
+.contactItem h3 {
+    margin-bottom: 0.8rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.contactItem p {
+    font-size: 1.1rem;
+    margin: 0.3rem 0;
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+
+    .sectionTitle {
+        font-size: 2rem;
+    }
+
+    .aboutContent,
+    .servicesGrid {
+        grid-template-columns: 1fr;
+    }
+}
